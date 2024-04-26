@@ -33,6 +33,7 @@ public class Calculator {
                 throw new BadOperationException();
         }
 
+        queue.add(result);
 
         return result;
     }
