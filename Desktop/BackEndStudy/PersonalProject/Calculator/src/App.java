@@ -5,6 +5,8 @@ import java.io.InputStreamReader;
 public class App {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        double[] resultArr = new double[10];
+        int index = 0;
 
         while (true) {
             Double result = 0.0; // 계산 결과 값
@@ -36,6 +38,8 @@ public class App {
                         break;
                 }
                 System.out.println("결과: " + result);
+                resultArr[index] = result;
+                index++;
             }
             System.out.println("더 계산하시겠습니까? (exit 입력 시 종료) ");
             String exit = br.readLine();
