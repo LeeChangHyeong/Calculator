@@ -3,11 +3,13 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.Queue;
 
 public class App {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        ArrayList<Double> resultArr = new ArrayList<>();
+        Queue<Double> resultArr = new LinkedList<>();
         int index = 0;
 
         while (true) {
@@ -42,6 +44,13 @@ public class App {
                 System.out.println("결과: " + result);
                 resultArr.add(result);
             }
+            System.out.println("가장 먼저 저장된 연산 결과를 삭제하시겠습니까? (remove 입력 시 삭제) ");
+            String removeResult = br.readLine();
+
+            if (removeResult.equals("remove")) {
+                resultArr.poll();
+            }
+
             System.out.println("더 계산하시겠습니까? (exit 입력 시 종료) ");
             String exit = br.readLine();
 
