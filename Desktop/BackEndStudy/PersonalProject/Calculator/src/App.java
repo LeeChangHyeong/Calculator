@@ -1,12 +1,13 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
 import java.util.Arrays;
 
 public class App {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        double[] resultArr = new double[10];
+        ArrayList<Double> resultArr = new ArrayList<>();
         int index = 0;
 
         while (true) {
@@ -39,17 +40,7 @@ public class App {
                         break;
                 }
                 System.out.println("결과: " + result);
-                if (index >= 9) {
-                    for (int i = 0; i < 9; i++) {
-                        resultArr[i] = resultArr[i + 1];
-                    }
-                    resultArr[9] = result;
-                    System.out.println(Arrays.toString(resultArr));
-                } else {
-                    resultArr[index] = result;
-                    index++;
-                    System.out.println(Arrays.toString(resultArr));
-                }
+                resultArr.add(result);
             }
             System.out.println("더 계산하시겠습니까? (exit 입력 시 종료) ");
             String exit = br.readLine();
