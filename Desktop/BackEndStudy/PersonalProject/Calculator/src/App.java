@@ -18,6 +18,10 @@ public class App {
 
             System.out.println("사칙연산 기호를 입력하세요: ");
             String operations = br.readLine(); // 기호 입력
+            if(operations != "+" || operations != "-" || operations != "*"|| operations != "/" ) {
+                System.out.println("올바른 연산기호를 입력해 주세요");
+                break;
+            }
 
             System.out.println("두 번째 숫자를 입력하세요: ");
             double secoundInput = Double.parseDouble(br.readLine()); // 첫 번째 숫자 입력
