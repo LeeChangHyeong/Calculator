@@ -1,8 +1,6 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.Queue;
 
@@ -16,18 +14,19 @@ public class App {
             Double result = 0.0; // 계산 결과 값
 
             System.out.println("첫 번째 숫자를 입력하세요: ");
-            double firstInput = Double.parseDouble(br.readLine());
+            double firstInput = Double.parseDouble(br.readLine()); // 첫 번째 숫자 입력
 
             System.out.println("사칙연산 기호를 입력하세요: ");
-            String operations = br.readLine();
+            String operations = br.readLine(); // 기호 입력
 
             System.out.println("두 번째 숫자를 입력하세요: ");
-            double secoundInput = Double.parseDouble(br.readLine());
+            double secoundInput = Double.parseDouble(br.readLine()); // 첫 번째 숫자 입력
 
+            // 나눗셈 오류 걸러내기
             if (operations.equals("/") && secoundInput == 0) {
                 System.out.println("나눗셈 연산에서 분모(두번째 정수)에 0이 입력될 수 없습니다.");
             } else {
-                switch (operations) {
+                switch (operations) { // 연산자 별로 연산 실행
                     case "+":
                         result = firstInput + secoundInput;
                         break;
@@ -49,6 +48,13 @@ public class App {
 
             if (removeResult.equals("remove")) {
                 resultArr.poll();
+            }
+
+            System.out.println("저장된 연산결과를 조회하시겠습니까? (inquiry 입력 시 조회) ");
+            String printAll = br.readLine();
+
+            if(printAll.equals("inquiry")) {
+                resultArr.forEach(f -> System.out.println(f));
             }
 
             System.out.println("더 계산하시겠습니까? (exit 입력 시 종료) ");
