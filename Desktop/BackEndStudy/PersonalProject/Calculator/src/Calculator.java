@@ -5,7 +5,11 @@ import java.util.LinkedList;
 import java.util.Queue;
 
 public class Calculator {
-    private Queue<Double> queue = new LinkedList<>(); // 연산 결과를 저장하는 컬렉션 타입
+    private Queue<Double> queue; // 연산 결과를 저장하는 컬렉션 타입
+
+    public Calculator(Queue<Double> queue) {
+        this.queue = queue;
+    }
 
     // throws로 BadOperationException, DivideToZeroException의 예외 사항을 던질 수 있는지 알려줌
     public Double calculate(double firstNum, double secondNum, String operation) throws BadOperationException, DivideToZeroException {
