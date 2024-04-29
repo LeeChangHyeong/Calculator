@@ -1,10 +1,6 @@
 import Exceptions.BadNumException;
 import Exceptions.BadOperationException;
 import Exceptions.DivideToZeroException;
-import Operators.AddOperator;
-import Operators.DivideOperator;
-import Operators.MultiplyOperator;
-import Operators.SubtractOperator;
 
 import java.util.Queue;
 
@@ -13,10 +9,6 @@ public class ArithmeticCalculator extends Calculator {
     private double secondNum;
     private String operator;
     private double result;
-    private AddOperator addOperator = new AddOperator();
-    private SubtractOperator subtractOperator = new SubtractOperator();
-    private MultiplyOperator multiplyOperator = new MultiplyOperator();
-    private DivideOperator divideOperator = new DivideOperator();
 
     public void setValues(String firstNumStr, String secondNumStr, String operator) throws BadNumException {
         try {
@@ -37,20 +29,23 @@ public class ArithmeticCalculator extends Calculator {
     public Double calculate() throws BadOperationException, DivideToZeroException {
         switch (operator) {
             case "+":
-                result = addOperator.operate(firstNum, secondNum);
+                result = Operate.addOperate(firstNum, secondNum);
                 break;
             case "-":
-                result = subtractOperator.operate(firstNum, secondNum);
+                result = Operate.subtractOperate(firstNum, secondNum);
                 break;
             case "/":
                 if (secondNum == 0) {
                     // 상황에 맞게 던지고 메서드 종료
                     throw new DivideToZeroException();
                 }
-                result = divideOperator.operate(firstNum, secondNum);
+                result = Operate.divideOperate(firstNum, secondNum);
                 break;
             case "*":
-                result = multiplyOperator.operate(firstNum, secondNum);;
+                result = Operate.multiplyOperate(firstNum, secondNum);
+                break;
+            case "%":
+                result = Operate.modOperate(firstNum, secondNum);
                 break;
             default:
                 // 상황에 맞게 던지고 메서드 종료
