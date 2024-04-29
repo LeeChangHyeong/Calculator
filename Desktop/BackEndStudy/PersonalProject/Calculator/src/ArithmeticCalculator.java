@@ -26,26 +26,30 @@ public class ArithmeticCalculator extends Calculator {
     }
 
     @Override
-    public Double calculate() throws BadOperationException, DivideToZeroException {
+    public Double calculate() throws BadOperationException, DivideToZeroException{
         switch (operator) {
             case "+":
-                result = Operate.addOperate(firstNum, secondNum);
+
                 break;
+
             case "-":
-                result = Operate.subtractOperate(firstNum, secondNum);
+                result = firstNum - secondNum;
                 break;
             case "/":
                 if (secondNum == 0) {
                     // 상황에 맞게 던지고 메서드 종료
                     throw new DivideToZeroException();
                 }
-                result = Operate.divideOperate(firstNum, secondNum);
+
+                break;
+
+            case "%":
+
+                result = firstNum / secondNum;
                 break;
             case "*":
-                result = Operate.multiplyOperate(firstNum, secondNum);
-                break;
-            case "%":
-                result = Operate.modOperate(firstNum, secondNum);
+                result = firstNum * secondNum;
+
                 break;
             default:
                 // 상황에 맞게 던지고 메서드 종료
