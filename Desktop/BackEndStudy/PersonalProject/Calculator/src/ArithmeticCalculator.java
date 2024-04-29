@@ -29,7 +29,7 @@ public class ArithmeticCalculator extends Calculator {
     public Double calculate() throws BadOperationException, DivideToZeroException{
         switch (operator) {
             case "+":
-
+                result = firstNum + secondNum;
                 break;
 
             case "-":
