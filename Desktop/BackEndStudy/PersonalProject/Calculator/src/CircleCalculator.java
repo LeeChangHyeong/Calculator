@@ -1,18 +1,36 @@
+import Exceptions.BadNumException;
+
 import java.util.Queue;
 
-public class CircleCalculator extends Calculator{
+public class CircleCalculator extends Calculator {
+    private Double radius;
+
+    @Override
+    public Double calculate() {
+        return radius * radius * 3.14;
+    }
+
+    public void setRadius(String radius) throws BadNumException {
+        try {
+            this.radius = Double.parseDouble(radius);
+        } catch (NumberFormatException e) {
+            throw new BadNumException();
+        }
+
+    }
+
+    @Override
+    public void setResults() {
+        circleAreaQueue.add(calculate());
+    }
+
     @Override
     public Queue<Double> getResults() {
         return circleAreaQueue;
     }
 
     @Override
-    public double calculateCircleArea(double radius) {
-        return super.calculateCircleArea(radius);
-    }
-
-    @Override
-    public void setCircleArea(double circleArea) {
-        circleAreaQueue.add(circleArea);
+    public void removeFirstReseult() {
+        circleAreaQueue.poll();
     }
 }
