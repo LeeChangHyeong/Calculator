@@ -1,32 +1,34 @@
+import Exceptions.BadNumException;
 import Exceptions.BadOperationException;
 import Exceptions.DivideToZeroException;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.LinkedList;
 
 public class App {
-    public static void main(String[] args) throws IOException, DivideToZeroException, BadOperationException {
+    public static void main(String[] args) throws IOException, DivideToZeroException, BadOperationException, BadNumException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         ArithmeticCalculator arithmeticCalculator = new ArithmeticCalculator();
         CircleCalculator circleCalculator = new CircleCalculator();
 
         while (true) {
             System.out.println("사칙 연산을 진행하시겠습니까 원의 넓이를 구하시겠습니까? (1 입력시 사칙 연산, 아무 숫자 입력시 원의 넓이)");
-            if(Integer.parseInt(br.readLine()) == 1) {
+            if (Integer.parseInt(br.readLine()) == 1) {
                 System.out.print("첫 번째 숫자를 입력하세요: ");
-                int firstNum = Integer.parseInt(br.readLine());
+                String firstNum = br.readLine();
 
                 System.out.print("두 번째 숫자를 입력하세요: ");
-                int secondNum = Integer.parseInt(br.readLine());
+                String secondNum = br.readLine();
 
                 System.out.print("사칙연산 기호를 입력하세요: ");
                 String operator = br.readLine();
 
-                double result = arithmeticCalculator.calculate(firstNum, secondNum, operator);
+                arithmeticCalculator.setValues(firstNum, secondNum, operator);
 
-                System.out.println(result);
+                System.out.println(arithmeticCalculator.calculate());
+                // 결과값 저장
+                arithmeticCalculator.setResults();
 
                 System.out.println();
 
@@ -43,14 +45,15 @@ public class App {
                 System.out.println();
             } else {
                 System.out.print("원의 반지름을 입력하세요: ");
-                double radius = Double.parseDouble(br.readLine());
+                String radius = br.readLine();
+                circleCalculator.setRadius(radius);
                 System.out.println();
                 // 원의 넓이 구하기
-                double circleArea = circleCalculator.calculateCircleArea(radius);
+                double circleArea = circleCalculator.calculate();
 
-                // 원의 넓이 출력 후 원의 넓이 저장
                 System.out.println("원의 넓이: " + circleArea);
-                circleCalculator.setCircleArea(circleArea);
+                // 결과값 저장
+                circleCalculator.setResults();
 
                 System.out.println("저장된 원의 넓이들: " + circleCalculator.getResults());
             }
