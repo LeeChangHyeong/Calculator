@@ -7,7 +7,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 public class App {
-    public static void main(String[] args) throws IOException, DivideToZeroException, BadOperationException, BadNumException {
+    public static void main(String[] args) throws IOException, BadNumException, DivideToZeroException, BadOperationException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         ArithmeticCalculator arithmeticCalculator = new ArithmeticCalculator();
         CircleCalculator circleCalculator = new CircleCalculator();
@@ -24,7 +24,9 @@ public class App {
                 System.out.print("사칙연산 기호를 입력하세요: ");
                 String operator = br.readLine();
 
-                arithmeticCalculator.setValues(firstNum, secondNum, operator);
+                OperatorType operatorType = OperatorType.getOperatorBySymbol(operator);
+
+                arithmeticCalculator.setValues(firstNum, secondNum, operatorType);
 
                 System.out.println(arithmeticCalculator.calculate());
                 // 결과값 저장
@@ -63,6 +65,5 @@ public class App {
                 break;
             }
         }
-
     }
 }
