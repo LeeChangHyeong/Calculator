@@ -12,6 +12,7 @@ public class App {
         ArithmeticCalculator arithmeticCalculator = new ArithmeticCalculator();
         CircleCalculator circleCalculator = new CircleCalculator();
 
+
         while (true) {
             System.out.println("사칙 연산을 진행하시겠습니까 원의 넓이를 구하시겠습니까? (1 입력시 사칙 연산, 아무 숫자 입력시 원의 넓이)");
             if (Integer.parseInt(br.readLine()) == 1) {
@@ -63,6 +64,5 @@ public class App {
                 break;
             }
         }
-
     }
 }
