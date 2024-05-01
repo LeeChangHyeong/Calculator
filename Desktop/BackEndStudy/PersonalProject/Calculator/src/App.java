@@ -1,15 +1,34 @@
 import Exceptions.BadNumException;
 import Exceptions.BadOperationException;
 import Exceptions.DivideToZeroException;
+import Operators.*;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.HashMap;
+import java.util.Map;
 
 public class App {
+
     public static void main(String[] args) throws IOException, BadNumException, DivideToZeroException, BadOperationException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        ArithmeticCalculator arithmeticCalculator = new ArithmeticCalculator();
+
+        Map<OperatorType, Calculate> map = new HashMap<>();
+
+        Calculate addOperator = new AddOperator();
+        Calculate divideOperator = new DivideOperator();
+        Calculate modOperator = new ModOperator();
+        Calculate multiplyOperator = new MultiplyOperator();
+        Calculate subtractOperator = new SubtractOperator();
+
+        map.put(OperatorType.ADD, addOperator);
+        map.put(OperatorType.DIVIDE, divideOperator);
+        map.put(OperatorType.MOD, modOperator);
+        map.put(OperatorType.MULTIPLY, multiplyOperator);
+        map.put(OperatorType.SUBTRACT, subtractOperator);
+
+        ArithmeticCalculator arithmeticCalculator = new ArithmeticCalculator(map);
         CircleCalculator circleCalculator = new CircleCalculator();
 
         while (true) {
