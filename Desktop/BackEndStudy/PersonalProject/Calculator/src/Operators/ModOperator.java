@@ -1,7 +1,8 @@
 package Operators;
 
-public class ModOperator {
-    public double operate(double firstNum, double secondNum) {
+public class ModOperator implements Calculate {
+    @Override
+    public double calculate(double firstNum, double secondNum) {
         return firstNum % secondNum;
     }
 }

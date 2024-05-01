@@ -1,7 +1,8 @@
 package Operators;
 
-public class DivideOperator {
-    public double operate(double firstNum, double secondNum) {
+public class DivideOperator implements Calculate {
+    @Override
+    public double calculate(double firstNum, double secondNum) {
         return firstNum / secondNum;
     }
 }
